@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoffeeShop.Api", "CoffeeSho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoffeeShop.Models", "CoffeeShop.Models\CoffeeShop.Models.csproj", "{0725554E-87B3-4E24-81C9-C94C097C41E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeShop.Web", "CoffeeShop.Web\CoffeeShop.Web.csproj", "{D31611DD-2397-495F-BA4F-85333991067F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoffeeShop.Web", "CoffeeShop.Web\CoffeeShop.Web.csproj", "{D31611DD-2397-495F-BA4F-85333991067F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

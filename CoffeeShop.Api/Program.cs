@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICoffeeRepository, CoffeeRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddDbContext<DataContext>();
+builder.Services.AddScoped<HttpClient>();
 
 var app = builder.Build();
 
