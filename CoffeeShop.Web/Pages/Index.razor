@@ -1,0 +1,47 @@
+﻿@page "/"
+@inject ICoffeeService CoffeeService
+
+<PageTitle>Index</PageTitle>
+
+<h1 class="text-center mb-3">Welcome to the coffee shop</h1>
+
+<div class="container p-5">
+    <div class="row">
+        <div class="col-lg-4 offset-lg-4 p-4 text-center">
+            <div class="mb-3">
+                @if (Coffee != null)
+                {
+                    @if(Coffee.Message.StartsWith("Http"))
+                    {
+                        <p>Please wait, coffee machine is out of coffee</p>
+                    }
+                    else
+                    {
+                        <p>@Coffee.Message</p>
+                        <p>at @Coffee.Prepared</p>
+                        <p>Enjoy your coffee!</p>
+                    }
+
+                    <p>You Ordered :@orderPlaced coffee</p>
+                }
+            </div>
+            <div class="mb-3">
+                <button type="button" class="btn btn-primary" @onclick="OrderCoffee">Get coffee</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public Coffee? Coffee { get; set; }
+
+    private int orderPlaced = 0;
+
+    private async void OrderCoffee()
+    {
+        Coffee = await CoffeeService.GetCoffee();
+        orderPlaced++;
+    }
+}
+
