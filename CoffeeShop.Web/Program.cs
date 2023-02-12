@@ -10,5 +10,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7151/") });
 builder.Services.AddScoped<ICoffeeService, CoffeeService>();
+builder.Services.AddScoped<IWeatherService, WeatherService>();
 
 await builder.Build().RunAsync();

@@ -27,7 +27,7 @@ namespace CoffeeShop.Api.Repository
         public async Task<int> GetOrderNumbers()
         {
             var orders =  await _dataContext.Orders.ToListAsync();
-            return orders.Count();
+            return orders.Count;
         }
 
         public async Task<List<Order>> GetOrders()

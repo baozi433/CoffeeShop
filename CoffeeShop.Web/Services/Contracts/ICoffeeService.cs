@@ -4,6 +4,6 @@ namespace CoffeeShop.Web.Services.Contracts
 {
     public interface ICoffeeService
     {
-        Task<Coffee> GetCoffee();
+        Task<Coffee> GetCoffee(double lat, double lon);
     }
 }

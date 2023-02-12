@@ -1,5 +1,6 @@
 ﻿@page "/GetCoffeeWithWeather"
 @inject ICoffeeService CoffeeService
+@inject IWeatherService WeatherService
 @inject IJSRuntime jsRuntime
 @using BrowserInterop.Extensions
 @using BrowserInterop.Geolocation
@@ -16,8 +17,12 @@
                 @if(geolocationPosition != null)
                 {
                     <p>Your current Locaiton is: </p>
-                    <p>LAT: @latitude</p>
+                    <p>LAT: @latitude.</p>
                     <p>LON: @longitude</p>
+                    @if(Weather != null)
+                    {
+                        <p>Temperature is: @Weather.Temperature at @Weather.City</p>
+                    }               
                 }
                 @if (Coffee != null)
                 {
@@ -50,6 +55,7 @@
 @code {
 
     public Coffee? Coffee { get; set; }
+    public Weather? Weather { get; set; }
     private int orderPlaced = 0;
 
     private double latitude, longitude;
@@ -69,6 +75,8 @@
     private async void OrderCoffee(double lat, double lon)
     {
         Coffee = await CoffeeService.GetCoffee(lat, lon);
+        Weather = await WeatherService.GetWeather(lat, lon);
+
         orderPlaced++;
     }
 
