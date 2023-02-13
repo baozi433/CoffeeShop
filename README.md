@@ -29,14 +29,14 @@ This project can be launched as a single startup project. All the Apis can be te
 In the visual studio, click start to run.
 
 ## CoffeeShop.Models
-This project is a Class Library using .NET 7 Framework targets .NET or .NET Standard
+This project is a Class Library using .NET 7 Framework targets .NET or .NET Standard.
 There are three models: Coffee, Order, and Weather. This project cannot be launched as a single startup project as it is a library.
 
 ## CoffeeShop.Web
 This project is a Blazor WebAssembly App using .NET 7 Framework for a web application that references CoffeeShop.Api and CoffeeShop.Models these two projects.
 
 ### Packages:
-BrowserInterop
+* BrowserInterop
 
 This third-party package is a library wrapping Blazor JSInterop call for browser API. I used this package for getting user location(latitude, and longitude) for open weather API
 
