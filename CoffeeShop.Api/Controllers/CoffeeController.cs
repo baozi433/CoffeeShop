@@ -2,7 +2,9 @@
 using CoffeeShop.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.JSInterop;
 using System.Net;
+using System.Net.NetworkInformation;
 
 namespace CoffeeShop.Api.Controllers
 {
@@ -27,7 +29,7 @@ namespace CoffeeShop.Api.Controllers
         }
 
         [HttpGet("brew-coffee")]
-        public async Task<ActionResult<Coffee>> GetCoffee()
+        public async Task<ActionResult<Coffee>> GetCoffee([FromQuery] double temperature)
         {
             try
             {
@@ -37,12 +39,11 @@ namespace CoffeeShop.Api.Controllers
                 orderNumbers++;
 
                 var coffee = await _coffeeRepository.GetCoffee();
-
+                
                 if (coffee == null)
                 {
                     return NotFound();
                 }
-
                 else if (orderNumbers % apiCallConditionNumber == 0)
                 {
                     return StatusCode(StatusCodes.Status503ServiceUnavailable, "");
@@ -51,6 +52,11 @@ namespace CoffeeShop.Api.Controllers
                 else if (order.OrderTime.Month == apiCallConditionDate.Month && order.OrderTime.Day == apiCallConditionDate.Day)
                 {
                     return StatusCode(StatusCodes.Status418ImATeapot, "");
+                }
+                else if (temperature >= 30.0)
+                {
+                    coffee.Message = "Your refreshing iced coffee is ready";
+                    return Ok(coffee);
                 }
                 else
                 {

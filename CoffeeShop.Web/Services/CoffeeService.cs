@@ -20,17 +20,11 @@ namespace CoffeeShop.Web.Services
             try
             {
                 var weather = await _weatherService.GetWeather(lat, lon);
-                var response = await _httpClient.GetAsync("api/coffee/brew-coffee");
+                var response = await _httpClient.GetAsync($"api/coffee/brew-coffee?temperature={weather.Temperature}");
                 if (response.IsSuccessStatusCode)
                 {
                     var coffee = await response.Content.ReadFromJsonAsync<Coffee>();
-                    if (weather.Temperature <= 30.0)
-                        return coffee;
-                    else
-                    {
-                        coffee.Message = "Your refreshing iced coffee is ready";
-                        return coffee;
-                    }                  
+                    return coffee;
                 }
                 else
                 {
