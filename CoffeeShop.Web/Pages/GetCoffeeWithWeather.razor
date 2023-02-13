@@ -12,8 +12,7 @@
 <div class="container p-5">
     <div class="row">
         <div class="col-lg-4 offset-lg-4 p-4 text-center">
-            <div class="mb-3">
-                <p>Getting your location...</p>
+            <div class="mb-3">               
                 @if(geolocationPosition != null)
                 {
                     <p>Your current Locaiton is: </p>
@@ -23,6 +22,9 @@
                     {
                         <p>Temperature is: @Weather.Temperature at @Weather.City</p>
                     }               
+                }
+                else{
+                    <p>Getting your location...</p>
                 }
                 @if (Coffee != null)
                 {
@@ -39,15 +41,9 @@
                     <p>You Ordered :@orderPlaced coffee</p>
                 }
             </div>
-            <div class="row">
-                <div class="mb-3">
-                    <button type="button" class="btn btn-primary" @onclick="GetLocation">Get location</button>
-                </div>
-                <div class="mb-3">
-                    <button type="button" class="btn btn-primary" @onclick="()=>OrderCoffee(latitude, longitude)">Get coffee</button>
-                </div>
+            <div class="mb-3">
+                <button disabled ="@isWaiting" type="button" class="btn btn-primary" @onclick="()=>OrderCoffee(latitude, longitude)">Get coffee</button>
             </div>
-
         </div>
     </div>
 </div>
@@ -57,6 +53,7 @@
     public Coffee? Coffee { get; set; }
     public Weather? Weather { get; set; }
     private int orderPlaced = 0;
+    private bool isWaiting = true;
 
     private double latitude, longitude;
     private WindowNavigatorGeolocation geolocation;
@@ -70,14 +67,16 @@
         geolocation = navigator.Geolocation;
 
         await GetLocation();
+
+        await Task.Delay(3000);
+        isWaiting = false;
+
     }
 
     private async void OrderCoffee(double lat, double lon)
     {
-        Coffee = await CoffeeService.GetCoffee(lat, lon);
-        Weather = await WeatherService.GetWeather(lat, lon);
-
         orderPlaced++;
+        Coffee = await CoffeeService.GetCoffee(lat, lon);    
     }
 
     private async Task GetLocation()
@@ -91,5 +90,7 @@
 
         latitude = geolocationPosition.Coords.Latitude;
         longitude = geolocationPosition.Coords.Longitude;
+
+        Weather = await WeatherService.GetWeather(latitude, longitude);
     }
 }
