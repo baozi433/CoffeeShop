@@ -37,17 +37,11 @@ namespace CoffeeShop.Api.Controllers
                 orderNumbers++;
 
                 var coffee = await _coffeeRepository.GetCoffee();
-                //var orderNumbers = await _orderRepository.GetOrderNumbers();
 
                 if (coffee == null)
                 {
                     return NotFound();
                 }
-
-                //else if (orderNumbers % apiCallConditionNumber == 0)
-                //{
-                //    return StatusCode(StatusCodes.Status503ServiceUnavailable, "");
-                //}
 
                 else if (orderNumbers % apiCallConditionNumber == 0)
                 {

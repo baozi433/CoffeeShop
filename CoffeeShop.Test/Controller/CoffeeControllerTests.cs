@@ -53,7 +53,5 @@ namespace CoffeeShop.Test.Controller
             var result = actionResult.Result as NotFoundResult;
         }
 
-
-
     }
 }

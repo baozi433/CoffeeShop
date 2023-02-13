@@ -11,8 +11,6 @@ namespace CoffeeShop.Api.Repository
     {
         private readonly DataContext _dataContext;
 
-        //public static List<Order> orders = new List<Order>();
-
         public OrderRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
