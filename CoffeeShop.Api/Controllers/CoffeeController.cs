@@ -16,10 +16,14 @@ namespace CoffeeShop.Api.Controllers
         public const int apiCallConditionNumber = 5;
         public DateTime apiCallConditionDate = new DateTime(2023, 4, 11);
 
+        public int orderNumbers;
+
         public CoffeeController(ICoffeeRepository coffeeRepository, IOrderRepository orderRepository)
         {
             _coffeeRepository = coffeeRepository;
             _orderRepository = orderRepository;
+
+            orderNumbers = _orderRepository.GetOrderNumbers().Result;
         }
 
         [HttpGet("brew-coffee")]
@@ -31,7 +35,7 @@ namespace CoffeeShop.Api.Controllers
                 await _orderRepository.AddOrder(order);
 
                 var coffee = await _coffeeRepository.GetCoffee();
-                var orderNumbers = await _orderRepository.GetOrderNumbers();
+                //var orderNumbers = await _orderRepository.GetOrderNumbers();
 
                 if (coffee == null)
                 {

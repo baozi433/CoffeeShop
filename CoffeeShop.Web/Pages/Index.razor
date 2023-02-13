@@ -1,7 +1,7 @@
 ﻿@page "/"
 @inject ICoffeeService CoffeeService
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Love at First Sip</PageTitle>
 
 <h1 class="text-center mb-3">Welcome to the coffee shop</h1>
 
@@ -26,7 +26,7 @@
                 }
             </div>
             <div class="mb-3">
-                <button type="button" class="btn btn-primary" @onclick="OrderCoffee">Get coffee</button>
+                <button disabled="@isWaiting" type="button" class="btn btn-primary" @onclick="OrderCoffee">Get coffee</button>
             </div>
         </div>
     </div>
@@ -37,11 +37,23 @@
     public Coffee? Coffee { get; set; }
 
     private int orderPlaced = 0;
+    private bool isWaiting = false;
 
     private async void OrderCoffee()
     {
+        isWaiting = true;
         Coffee = await CoffeeService.GetCoffee();
         orderPlaced++;
+        StateHasChanged();
+
+        await HandleButtonClick();
+    }
+
+    private async Task HandleButtonClick()
+    {
+        await Task.Delay(2000);
+        isWaiting = false;
+        StateHasChanged();
     }
 }
 
