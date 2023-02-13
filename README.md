@@ -1,5 +1,5 @@
 # Brew Coffee Task overview
-In this project, we created a coffee shop solution that contains three projects CoffeeShop.Api, CoffeeShop.Models, and CoffeeShop.Web
+In this project, we created a coffee shop solution that contains three projects CoffeeShop.Api, CoffeeShop.Models, CoffeeShop.Web, and CoffeeShop.Test
 The backend is CoffeeShop.Api(ASP.NET Core Web API), and frontend is CoffeeShop.Web (Blazor WebAssembly).
 
 The main master branch is for the basic task 1, 2, 3. and the CheckWeather branch is for the bonus 1 task. So, the CheckWeather branch has all the master features.
