@@ -1,10 +1,6 @@
 ﻿using CoffeeShop.Api.Repository.Contract;
 using CoffeeShop.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.JSInterop;
-using System.Net;
-using System.Net.NetworkInformation;
 
 namespace CoffeeShop.Api.Controllers
 {

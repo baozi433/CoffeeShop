@@ -1,7 +1,5 @@
-﻿using CoffeeShop.Api.Repository;
-using CoffeeShop.Api.Repository.Contract;
+﻿using CoffeeShop.Api.Repository.Contract;
 using CoffeeShop.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoffeeShop.Api.Controllers
