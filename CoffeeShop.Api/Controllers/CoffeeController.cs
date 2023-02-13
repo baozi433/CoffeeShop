@@ -34,6 +34,8 @@ namespace CoffeeShop.Api.Controllers
                 var order = new Order { OrderTime = DateTime.Now };
                 await _orderRepository.AddOrder(order);
 
+                orderNumbers++;
+
                 var coffee = await _coffeeRepository.GetCoffee();
                 //var orderNumbers = await _orderRepository.GetOrderNumbers();
 
