@@ -3,7 +3,7 @@ The coffee shop repo has four projects: CoffeeShop.Api, CoffeeShop.Models, Coffe
 The backend is CoffeeShop.Api(ASP.NET Core Web API), and frontend is CoffeeShop.Web (Blazor WebAssembly).
 
 The main master branch is for the basic task 1, 2, 3. and the CheckWeather branch is for the extra credit. So, the CheckWeather branch has all the master features.\
-The following description is based on the CheckWeather branch. We set up multiple startup projects with the sequence Api -> Web
+The following description is based on the CheckWeather branch. I set up multiple startup projects with the sequence Api -> Web
 
 ## CoffeeShop.Api
 This project is an ASP.NET Core Web API using .NET 7 Framework which references CoffeeShop.Models project and used the following packages:
@@ -19,7 +19,7 @@ This project is an ASP.NET Core Web API using .NET 7 Framework which references 
 This project is using EntityFrameworkCore this ORM for data operation, Newtonsoft.Json is for converting JSON data to object, Swashbuckle.AspNetCore is for api test UI.
 
 ### Folder structure
-We used a repository design pattern with the following structure:
+I used a repository design pattern with the following structure:
 * Controllers: coffee, order, and weather API controllers
 * Data: Datacontext sql server setup and configuration
 * Repository: CoffeeReopository, OrderRepository, and with relevant contracts for data access through designed methods
@@ -41,7 +41,7 @@ This project is a Blazor WebAssembly App using .NET 7 Framework for a web applic
 This third-party package is a library wrapping Blazor JSInterop call for browser API. I used this package for getting user location(latitude, and longitude) for open weather API
 
 ### Folder structure
-We used a service design pattern with the following structure:
+I used a service design pattern with the following structure:
 * Pages: Razor component
 * Services: CoffeeService, WeatherService, and relevant contracts for calling relevant web API and getting a response for relevant pages/components.
 
