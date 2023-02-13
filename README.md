@@ -47,3 +47,7 @@ We used a service design pattern with the following structure:
 
 ### Run
 This project needs the CoffeeShop.Api project run first, so I set up multiple startup projects.
+
+## CoffeeShop.Test
+This is a xUnit test projects using packages FakeItEasy for unit test
+
