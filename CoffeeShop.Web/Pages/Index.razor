@@ -63,14 +63,16 @@
 
     protected override async Task OnInitializedAsync()
     {
+        isWaiting = true;
         var window = await jsRuntime.Window();
         var navigator = await window.Navigator();
         geolocation = navigator.Geolocation;
 
         await GetLocation();
+        StateHasChanged();
 
-        await Task.Delay(3000);
         isWaiting = false;
+        StateHasChanged();
 
     }
 
@@ -81,8 +83,8 @@
         orderPlaced++;
         StateHasChanged();
 
-        await HandleButtonClick();
-        
+        isWaiting = false;
+        StateHasChanged();      
     }
 
     private async Task GetLocation()
@@ -98,12 +100,5 @@
         longitude = geolocationPosition.Coords.Longitude;
 
         Weather = await WeatherService.GetWeather(latitude, longitude);
-    }
-
-    private async Task HandleButtonClick()
-    {
-        await Task.Delay(2000);
-        isWaiting = false;
-        StateHasChanged();
     }
 }
