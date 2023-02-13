@@ -37,7 +37,6 @@ namespace CoffeeShop.Api.Controllers
                 orderNumbers++;
 
                 var coffee = await _coffeeRepository.GetCoffee();
-                //var orderNumbers = await _orderRepository.GetOrderNumbers();
 
                 if (coffee == null)
                 {
